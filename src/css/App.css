@@ -1,0 +1,109 @@
+/*===============================
+    Variables
+================================*/
+:root {
+  --theme-color: #2C2C2C;
+  --font-color: #A9A9A9;
+}
+
+/*===============================
+    Base
+================================*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--theme-color);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 10rem;
+  color: var(--font-color);
+}
+
+/*===============================
+    ZenDo
+================================*/
+.zenDo {
+  width: 80vw;
+  margin: auto;
+}
+
+/*===============================
+    Todo Form
+================================*/
+.todoForm__input {
+  display: block;
+  width: 30vw;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.todoForm__submit {
+  display: block;
+  margin: auto;
+}
+
+.warning {
+  height: 20px;
+}
+
+.warning__text {
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 16px;
+  margin-top: 20px;
+  color: #FF9800;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/*===============================
+Todo List
+================================*/
+.todoList__title {
+  text-align: center;
+  font-size: 5rem;
+  color: var(--font-color);
+}
+.todoList__items {
+  list-style: none;
+}
+
+.todoItem {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+  position: relative;
+}
+.todoItem__remove {
+  display: block;
+  background-color: #4CAF50;
+  color: #ffffff;
+  position: absolute;
+  height: 100%;
+}
+.todoItem__edit {
+  position: relative;
+  left: 80px;
+  display: block;
+}
+.todoItem__name {
+  position: relative;
+  left: 80px;
+  display: block;
+  color: var(--font-color);
+  font-size: 2rem;
+}/*# sourceMappingURL=App.css.map */

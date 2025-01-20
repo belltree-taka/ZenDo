@@ -1,0 +1,114 @@
+/*===============================
+    Variables
+================================*/
+:root {
+    --theme-color: #2C2C2C;
+    --font-color: #A9A9A9;
+}
+
+/*===============================
+    Base
+================================*/
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--theme-color);
+}
+
+html{
+    font-size: 62.5%;
+}
+
+h1{
+    text-align: center;
+    font-size: 10rem;
+    color: var(--font-color);
+}
+
+/*===============================
+    ZenDo
+================================*/
+.zenDo{
+    // border: 1px solid yellow;
+    width: 80vw;
+    margin: auto;
+}
+/*===============================
+    Todo Form
+================================*/
+.todoForm {
+    // border: 1px solid red;
+    &__input{
+        display: block;
+        width: 30vw;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    &__submit{
+        display: block;
+        margin: auto;
+    }
+}
+
+.warning{
+    height: 20px;
+}
+
+.warning__text {
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    font-size: 16px;
+    margin-top: 20px;
+    color: #FF9800;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/*===============================
+Todo List
+================================*/
+.todoList{
+    &__title{
+        text-align: center;
+        font-size: 5rem;
+        color: var(--font-color)
+    }
+    &__items{
+        list-style: none;
+    }
+}
+
+.todoItem{
+    width: 50%;
+    margin: auto;
+    margin-bottom: 20px;
+    position: relative;
+    &__remove{
+        display: block;
+        background-color: #4CAF50;
+        color: #ffffff;
+        position: absolute;
+        height: 100%;
+    }
+    &__edit{
+        position: relative;
+        left: 80px;
+        display: block;
+    }
+    &__name{
+        position: relative;
+        left: 80px;
+        display: block;
+        color: var(--font-color);
+        font-size: 2rem;
+    }
+}
