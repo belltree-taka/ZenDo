@@ -11,6 +11,7 @@ const TodoForm = ({todos, setTodos, clickHandler, changeHandler, warning, val, v
                 <form onSubmit={clickHandler}>
                     <input
                     className='todoForm__input'
+                    placeholder='Add Item Here'
                     type="text"
                     value={val}
                     onChange={changeHandler}

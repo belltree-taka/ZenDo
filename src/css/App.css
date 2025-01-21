@@ -3,7 +3,7 @@
     Variables
 ================================*/
 :root {
-  --theme-color: #2C2C2C;
+  --theme-color: #FAF9F6;
   --font-color: #A9A9A9;
 }
 
@@ -17,30 +17,27 @@
 body {
   width: 100%;
   background-color: var(--theme-color);
-  -webkit-text-size-adjust: 100%; /* iOSのズームを無効化 */
+  font-family: "Roboto", sans-serif;
 }
 
 html {
   font-size: 100%;
-  -webkit-text-size-adjust: 100%; /* iOSのズームを無効化 */
 }
 
 h1 {
   text-align: center;
-  font-size: 10rem;
-  color: var(--font-color);
 }
 
 /*===============================
     ZenDo
 ================================*/
 .zenDo {
-  width: 80vw;
+  height: 100vh;
   margin: auto;
 }
 
 h1 .zendo-logo {
-  width: 150px;
+  width: 100px;
 }
 
 /*===============================
@@ -62,10 +59,6 @@ h1 .zendo-logo {
   background-color: #fff;
   box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
   outline: none;
-}
-.todoForm__submit {
-  display: block;
-  margin: auto;
 }
 
 .warning {
@@ -92,37 +85,68 @@ h1 .zendo-logo {
 /*===============================
 Todo List
 ================================*/
-.todoList__title {
-  text-align: center;
-  font-size: 5rem;
-  color: var(--font-color);
-}
 .todoList__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 auto 20px;
+  width: 300px;
+  border-radius: 8px;
   list-style: none;
+  padding: 0;
 }
 
 .todoItem {
-  width: 50%;
-  margin: auto;
-  margin-bottom: 20px;
-  position: relative;
+  width: 100%; /* 幅を親要素に合わせる */
+  display: flex; /* アイテム内でフレックスボックスを使用 */
+  align-items: center; /* 垂直方向で中央揃え */
+  justify-content: space-between; /* コンテンツ間をスペースで分離 */
+  padding: 12px 16px; /* 内側スペースを確保 */
+  border: 1px solid #ddd; /* 薄いグレーの枠線 */
+  border-radius: 8px; /* 角を丸くする */
+  background-color: #fff; /* 背景を白に設定 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+  transition: transform 0.2s, box-shadow 0.2s; /* ホバー時のアニメーション */
+}
+.todoItem:hover {
+  transform: translateY(-2px); /* ホバーで少し持ち上がる */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ホバー時の影を強調 */
 }
 .todoItem__remove {
-  display: block;
-  background-color: #4CAF50;
-  color: #ffffff;
-  position: absolute;
-  height: 100%;
+  background-color: #FF5252; /* 赤いボタン */
+  color: white; /* ボタンのテキスト色 */
+  border: none; /* ボーダーを消す */
+  border-radius: 4px; /* 角を丸くする */
+  padding: 6px 10px; /* ボタン内のスペース */
+  font-size: 14px;
+  cursor: pointer; /* ポインターに変更 */
+  transition: background-color 0.2s ease;
+}
+.todoItem__remove:hover {
+  background-color: #FF1744; /* ホバー時に濃い赤 */
 }
 .todoItem__edit {
-  position: relative;
-  left: 80px;
-  display: block;
+  flex-grow: 1; /* 幅を残りスペースに合わせる */
+  padding: 8px; /* 内側スペース */
+  margin: 0 8px; /* 左右にスペース */
+  border: 1px solid #4CAF50; /* 緑の枠線 */
+  border-radius: 4px; /* 角を丸くする */
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.todoItem__edit:focus {
+  border-color: #388E3C; /* フォーカス時に濃い緑 */
+  outline: none; /* デフォルトのアウトラインを消す */
 }
 .todoItem__name {
-  position: relative;
-  left: 80px;
-  display: block;
-  color: var(--font-color);
-  font-size: 2rem;
+  flex-grow: 1; /* 名前部分が幅を取る */
+  font-size: 16px; /* テキストサイズ */
+  color: #333; /* ダークグレーのテキスト */
+  cursor: pointer; /* ポインターに変更 */
+  text-decoration: none; /* テキストの下線を消す */
+  word-break: break-word; /* 長い名前を折り返す */
+  margin: 0 8px; /* 左右にスペース */
+}
+.todoItem__name:hover {
+  color: #007BFF; /* ホバー時に青色 */
 }/*# sourceMappingURL=App.css.map */

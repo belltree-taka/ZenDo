@@ -122,9 +122,9 @@ const Component = (props) => {
 	return(
         <React.Fragment>
             <div className='zenDo'>
-                <h1><img className="zendo-logo" src="../public/zendo-logo.png" alt="zendo-logo"/></h1>
-                <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
+                <h1><img className="zendo-logo" src="/zendo-logo.png" alt="zendo-logo"/></h1>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
+                <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
             </div>
         </React.Fragment>
     )

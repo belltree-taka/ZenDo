@@ -12,7 +12,7 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
 	return(
         <React.Fragment>
                 <div className='todoList'>
-                    <h2 className='todoList__title'>Todo List</h2>
+                    {/*Functional Menu*/}
                     <ul className='todoList__items'>
                         {todos.map( todo => (
                             <React.Fragment key={todo.id}>
