@@ -15,11 +15,6 @@ const TodoForm = ({todos, setTodos, clickHandler, changeHandler, warning, val, v
                     value={val}
                     onChange={changeHandler}
                     />
-                    <input
-                    className='todoForm__submit'
-                    type="submit"
-                    value='Add'
-                    />
                 </form>
                 <div className='warning'>
                     <p className={`warning__text ${visible? 'fade-in': 'fade-out'}`}>{warning}</p>

@@ -38,9 +38,11 @@ h1{
     width: 80vw;
     margin: auto;
 }
+
 h1 .zendo-logo{
     width: 150px;
 }
+
 /*===============================
     Todo Form
 ================================*/
@@ -48,9 +50,20 @@ h1 .zendo-logo{
     // border: 1px solid red;
     &__input{
         display: block;
-        width: 30vw;
-        margin: auto;
-        margin-bottom: 20px;
+        width: 300px;
+        margin: 0 auto;
+        padding: 12px 20px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        &:focus{
+            border-color: #4CAF50;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+            outline: none;
+        }
     }
     &__submit{
         display: block;
