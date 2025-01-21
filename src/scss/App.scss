@@ -14,11 +14,14 @@
 }
 
 body{
+    width: 100%;
     background-color: var(--theme-color);
+    -webkit-text-size-adjust: 100%; /* iOSのズームを無効化 */
 }
 
 html{
-    font-size: 62.5%;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%; /* iOSのズームを無効化 */
 }
 
 h1{
@@ -34,6 +37,9 @@ h1{
     // border: 1px solid yellow;
     width: 80vw;
     margin: auto;
+}
+h1 .zendo-logo{
+    width: 150px;
 }
 /*===============================
     Todo Form

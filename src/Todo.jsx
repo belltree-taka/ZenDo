@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState , useRef} from 'react'
 import { nanoid } from 'nanoid'
 import './css/App.css'
 import TodoList from './TodoList'
@@ -8,15 +8,19 @@ import TodoForm from './TodoForm'
 
 const Component = (props) => {
     const todoItems = [
-        {id: 1, name: 'Go To School', edit: false},
-        {id: 2, name: 'Join Baseball Club', edit: false},
-        {id: 3, name: 'Go Home', edit: false}
+        {id: 1, name: 'Todo1', edit: false},
+        {id: 2, name: 'Todo2', edit: false},
+        {id: 3, name: 'Todo3', edit: false}
     ]
 
     const [todos, setTodos] = useState([...todoItems])
     const [ val, setVal ] = useState('');
     const [ warning, setWarning ] = useState('');
     const [ visible, setVisible ] = useState(false);
+    const timeoutRef = useRef(null);
+
+    console.log(timeoutRef.current);
+    
 
     const changeHandler = (e) => {
         setVal(e.target.value)
@@ -118,7 +122,7 @@ const Component = (props) => {
 	return(
         <React.Fragment>
             <div className='zenDo'>
-                <h1>ZenDo</h1>
+                <h1><img className="zendo-logo" src="../public/zendo-logo.png" alt="zendo-logo"/></h1>
                 <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
             </div>
