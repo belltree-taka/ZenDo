@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState , useRef} from 'react'
 import { nanoid } from 'nanoid'
+import './css/reset.css'
 import './css/App.css'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
@@ -8,9 +9,9 @@ import TodoForm from './TodoForm'
 
 const Component = (props) => {
     const todoItems = [
-        {id: 1, name: 'Todo1', edit: false},
-        {id: 2, name: 'Todo2', edit: false},
-        {id: 3, name: 'Todo3', edit: false}
+        {id: 1, name: 'Todo1', edit: false, complete: false},
+        {id: 2, name: 'Todo2', edit: false, complete: false},
+        {id: 3, name: 'Todo3', edit: false, complete: false}
     ]
 
     const [todos, setTodos] = useState([...todoItems])
@@ -117,12 +118,11 @@ const Component = (props) => {
         setTodos(todosAfterUpdate)
     }
 
-    
-
 	return(
         <React.Fragment>
             <div className='zenDo'>
                 <h1><img className="zendo-logo" src="/zendo-logo.png" alt="zendo-logo"/></h1>
+                <div className='remainingCount'>1</div>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
                 <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
             </div>

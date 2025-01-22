@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
+import './css/reset.css'
 import './css/App.css'
 
 
@@ -12,7 +13,7 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
 	return(
         <React.Fragment>
                 <div className='todoList'>
-                    {/*Functional Menu*/}
+                    {/*Functional Menu has to be added here*/}
                     <ul className='todoList__items'>
                         {todos.map( todo => (
                             <React.Fragment key={todo.id}>
