@@ -9,9 +9,9 @@ import TodoForm from './TodoForm'
 
 const Component = (props) => {
     const todoItems = [
-        {id: 1, name: 'Todo1', edit: false, complete: false},
-        {id: 2, name: 'Todo2', edit: false, complete: false},
-        {id: 3, name: 'Todo3', edit: false, complete: false}
+        {id: 1, name: 'Todo1', edit: false, completed: false},
+        {id: 2, name: 'Todo2', edit: false, completed: false},
+        {id: 3, name: 'Todo3', edit: false, completed: false}
     ]
 
     const [todos, setTodos] = useState([...todoItems])
@@ -19,7 +19,7 @@ const Component = (props) => {
     const [ warning, setWarning ] = useState('');
     const [ visible, setVisible ] = useState(false);
 
-    
+
     const changeHandler = (e) => {
         setVal(e.target.value)
     }
@@ -51,7 +51,7 @@ const Component = (props) => {
             },3000)
         }else{
             const randomNum = nanoid();
-            const newTodo = {id: randomNum, name: val, edit: false}
+            const newTodo = {id: randomNum, name: val, edit: false, completed: false}
             setTodos([...todos, newTodo])
             setWarning('');
         }
@@ -59,18 +59,15 @@ const Component = (props) => {
     }
 
     const complete = (e) => {
-        // This returns array without the completed item by filtering the compleed item out.
-        const todosAfterComplete = todos.filter((todo) => {
-            if(typeof(todo.id) === 'string'){
-                return todo.id !== e.target.value 
+        // item that has matching id gets its completed flag turned on(true)
+        const todoAfterComplete = todos.map((todo) => {
+            if(todo.id.toString() === e.target.value){
+                return {...todo, completed: true}
             }else{
-                // Default 3 items in todoItems have number as id, 
-                // but when they are returned by e.target.value, they are string.
-                // So, parseInt has be utilized to compare them.
-                return todo.id !== parseInt(e.target.value) 
+                return {...todo}
             }
         })
-        setTodos(todosAfterComplete)
+        setTodos(todoAfterComplete)
     }
 
     const todoEdit = (_id) => {
@@ -86,6 +83,7 @@ const Component = (props) => {
         setTodos(todosAfterEdit)
     }
 
+    
     const updateTodo = (_id, _editVal) => {
         const todosAfterUpdate = todos.map((todo) => {
             if(todo.id === _id){
@@ -114,12 +112,14 @@ const Component = (props) => {
         })
         setTodos(todosAfterUpdate)
     }
-
+    
+    const remainingCount = todos.filter(todo => !todo.completed).length
+    
 	return(
         <React.Fragment>
             <div className='zenDo'>
                 <h1><img className="zendo-logo" src="/zendo-logo.png" alt="zendo-logo"/></h1>
-                <div className='remainingCount'>1</div>
+                <div className='remainingCount'>{remainingCount}</div>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
                 <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
             </div>

@@ -15,7 +15,8 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                 <div className='todoList'>
                     {/*Functional Menu has to be added here*/}
                     <ul className='todoList__items'>
-                        {todos.map( todo => (
+                        {/* Filtering completed */}
+                        {todos.filter(todo => todo.completed === false).map( todo => (
                             <React.Fragment key={todo.id}>
                                 <li className='todoItem'>
                                     <button
