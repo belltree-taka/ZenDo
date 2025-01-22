@@ -18,11 +18,8 @@ const Component = (props) => {
     const [ val, setVal ] = useState('');
     const [ warning, setWarning ] = useState('');
     const [ visible, setVisible ] = useState(false);
-    const timeoutRef = useRef(null);
 
-    console.log(timeoutRef.current);
     
-
     const changeHandler = (e) => {
         setVal(e.target.value)
     }
