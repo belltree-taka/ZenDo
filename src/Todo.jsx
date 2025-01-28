@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState , useRef} from 'react'
 import { nanoid } from 'nanoid'
-import './css/reset.css'
-import './css/App.css'
+import './scss/reset.scss'
+import './scss/App.scss'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 import Button from "@mui/material/Button"; //テスト
@@ -120,9 +120,10 @@ const Component = (props) => {
         <React.Fragment>
             <div className='zenDo'>
                 <h1><img className="zendo-logo" src="/zendo-logo.png" alt="zendo-logo"/></h1>
-                <div className='remainingCount'>{remainingCount}</div>
+                <div className='remainingCount'>You have <span>{remainingCount}</span> items left</div>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
                 <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
+                <Button variant="contained" color="primary">Hello MUI</Button>
             </div>
         </React.Fragment>
     )

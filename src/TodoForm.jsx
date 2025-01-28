@@ -1,6 +1,6 @@
 import React from 'react'
-import './css/reset.css'
-import './css/App.css'
+import './scss/reset.scss'
+import './scss/App.scss'
 
 
 const TodoForm = ({todos, setTodos, clickHandler, changeHandler, warning, val, visible, setVisible}) => {
