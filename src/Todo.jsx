@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState , useRef} from 'react'
+import { useState } from 'react'
 import { nanoid } from 'nanoid'
 import './scss/reset.scss'
 import './scss/App.scss'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 import Button from "@mui/material/Button"; //テスト
+import _default from 'eslint-plugin-react-refresh'
 
 
 const Component = (props) => {
@@ -61,14 +62,14 @@ const Component = (props) => {
 
     const complete = (e) => {
         // item that has matching id gets its completed flag turned on(true)
-        const todoAfterComplete = todos.map((todo) => {
+        const todosAfterComplete = todos.map((todo) => {
             if(todo.id.toString() === e.target.value){
                 return {...todo, completed: true}
             }else{
                 return {...todo}
             }
         })
-        setTodos(todoAfterComplete)
+        setTodos(todosAfterComplete)
     }
 
     const todoEdit = (_id) => {
@@ -84,35 +85,46 @@ const Component = (props) => {
         setTodos(todosAfterEdit)
     }
 
-    
     const updateTodo = (_id, _editVal) => {
-        const todosAfterUpdate = todos.map((todo) => {
-            if(todo.id === _id){
-                if(todo.name === _editVal){
-                    // If the data entry is same as existing value, it just turns edit flag to false
-                    setWarning('You did not change the item')
-                    setVisible(true)
-                    setTimeout(() => {
-                        setVisible(false)
-                    },3000)
-                    return {...todo, edit: false}
-                }else if( _editVal === ''){
-                    setWarning('You can not add empty item')
-                    setVisible(true)
-                    setTimeout(() => {
-                        setVisible(false)
-                    },3000)
-                    return {...todo, name: todo.name, edit: false}
-                }else{
-                    // If the data entry is diffrent from the existing value and no empty value, then update with new value(name)
-                    return {...todo, name: _editVal, edit: false}
-                }
-            }else{
-                return {...todo}
-            }
+
+        const duplicationCheck = todos.some((todo) => {
+            return todo.name === _editVal
         })
-        setTodos(todosAfterUpdate)
+
+        if ( duplicationCheck ){
+            
+            const todosWithAllEditFlagToFalse = todos.map((todo) => {
+                return {...todo, edit: false}
+            })
+            setWarning('This item already exists in the list')
+            setVisible(true)
+                    setTimeout(() => {
+                        setVisible(false)
+                    },3000)
+            setTodos([...todosWithAllEditFlagToFalse])
+            
+        } else {
+            const todosAfterUpdate = todos.map((todo) => {
+                if(todo.id === _id){
+                    if( _editVal === ''){
+                        setWarning('You can not add empty item')
+                        setVisible(true)
+                        setTimeout(() => {
+                            setVisible(false)
+                        },3000)
+                        return {...todo, name: todo.name, edit: false}
+                    }else{
+                        // If the data entry is diffrent from the existing value and no empty value, then update with new value(name)
+                        return {...todo, name: _editVal, edit: false}
+                    }
+                }else{
+                    return {...todo}
+                }
+            })
+            setTodos(todosAfterUpdate)
+        }
     }
+
     
     const remainingCount = todos.filter(todo => !todo.completed).length
     
@@ -123,7 +135,7 @@ const Component = (props) => {
                 <div className='remainingCount'>You have <span>{remainingCount}</span> items left</div>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
                 <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
-                <Button variant="contained" color="primary">Hello MUI</Button>
+                <Button variant="contained" color="primary">Krenar</Button>
             </div>
         </React.Fragment>
     )
