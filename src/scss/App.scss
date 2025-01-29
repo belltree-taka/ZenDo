@@ -1,6 +1,7 @@
 /*===============================
     Variables
 ================================*/
+
 :root {
     --theme-color: #FAF9F6;
     --font-color: #A9A9A9;
@@ -9,6 +10,7 @@
 /*===============================
     Base
 ================================*/
+
 *, *::before, *::after{
     box-sizing: border-box;
 }
@@ -17,6 +19,7 @@ body{
     width: 100%;
     background-color: var(--theme-color);
     font-family: 'Roboto', sans-serif;
+    padding-top: 30px;
 }
 
 html{
@@ -30,6 +33,7 @@ h1{
 /*===============================
     Todo.jsx
 ================================*/
+
 .zenDo{
     width: 80%;
     height: 100vh;
@@ -42,9 +46,15 @@ h1 .zendo-logo{
 }
 
 .remainingCount{
+    background-color: var(--theme-color);
+    box-shadow: -10px 0 0 #FAF9F6, 10px 0 0 #FAF9F6;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 20px;
+    position: sticky;
+    padding: 30px 0;
+    z-index: 1;
+    top: 0;
 }
 
 .remainingCount span {
@@ -52,10 +62,18 @@ h1 .zendo-logo{
     font-size: 4rem;
     color: #388E3C;
 }
+
 /*===============================
     TodoForm.jsx
 ================================*/
+
 .todoForm {
+    position: fixed;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    background-color: #4CAF51;
+    padding: 0 30px 30px;
     &__input{
         display: block;
         width: 100%;

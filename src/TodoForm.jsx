@@ -9,6 +9,9 @@ const TodoForm = ({todos, setTodos, clickHandler, changeHandler, warning, val, v
     return(
         <React.Fragment>
             <div className='todoForm'>
+                <div className='warning'>
+                    <p className={`warning__text ${visible? 'fade-in': 'fade-out'}`}>{warning}</p>
+                </div>
                 <form onSubmit={clickHandler}>
                     <input
                     className='todoForm__input'
@@ -18,9 +21,6 @@ const TodoForm = ({todos, setTodos, clickHandler, changeHandler, warning, val, v
                     onChange={changeHandler}
                     />
                 </form>
-                <div className='warning'>
-                    <p className={`warning__text ${visible? 'fade-in': 'fade-out'}`}>{warning}</p>
-                </div>
             </div>
         </React.Fragment>
     )
