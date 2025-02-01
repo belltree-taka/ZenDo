@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
-import './scss/reset.scss'
-import './scss/App.scss'
+// import './scss/reset.scss'
+// import './scss/App.scss'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 
@@ -132,7 +132,9 @@ const Component = (props) => {
         <React.Fragment>
             <div className='zenDo'>
                 <header>
-                    <h1><img className="zendo-logo" src="/zendo-logo.png" alt="zendo-logo"/></h1>
+                    {/* <h1>
+                        <img className="zendo-logo" src="/zendo-logo.png" alt="zendo-logo"/>
+                    </h1> */}
                 </header>
                     <div className='remainingCount'>You have <span>{remainingCount}</span> items left</div>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>

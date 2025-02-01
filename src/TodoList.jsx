@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
-import './scss/reset.scss'
-import './scss/App.scss'
+// import './scss/reset.scss'
+// import './scss/App.scss'
 
 
 const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, updateTodo, warning, setWarning}) => {
