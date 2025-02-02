@@ -39,7 +39,8 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                                     onClick={() => {
                                         complete(todo.id)
                                     }}
-                                    ><DeleteIcon/></IconButton>
+                                    ><DeleteIcon/>
+                                    </IconButton>
                                     {todo.edit ?
                                     <Input
                                     sx={{ width: '100%', maxWidth: 600, display: 'block'}}
@@ -61,12 +62,12 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                                     }}
                                     />
                                     :
-                                    <span
-                                    style={{cursor: 'pointer', width: '100%', display: 'block'}}
+                                    <Typography
+                                    sx={{cursor: 'pointer', width: '100%', display: 'block', textWrap: 'wrap', overflowWrap: 'anywhere'}}
                                     onClick={() => {
                                         todoEdit(todo.id)
                                     }}
-                                    >{todo.name}</span>
+                                    >{todo.name}</Typography>
                                     }
                                 </ListItem>
                             </React.Fragment>
