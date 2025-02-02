@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
-// import './scss/reset.scss'
-// import './scss/App.scss'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
-
+import { Typography } from '@mui/material';
 
 
 const Component = (props) => {
@@ -130,13 +128,10 @@ const Component = (props) => {
     
 	return(
         <React.Fragment>
-            <div className='zenDo'>
+            <div>
                 <header>
-                    {/* <h1>
-                        <img className="zendo-logo" src="/zendo-logo.png" alt="zendo-logo"/>
-                    </h1> */}
                 </header>
-                    <div className='remainingCount'>You have <span>{remainingCount}</span> items left</div>
+                <Typography color='primary'  sx={{display: 'block', width: '100%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold', textAlign: 'center'}}>You have<span style={{fontSize: '2rem', margin: '0 5px', color: '#df4f1b'}}>{remainingCount}</span>items left</Typography>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
                 <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
-// import './scss/reset.scss'
-// import './scss/App.scss'
+import { Button, List, ListItem, Input } from '@mui/material'
+
 
 
 const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, updateTodo, warning, setWarning}) => {
@@ -12,21 +12,19 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
 
 	return(
         <React.Fragment>
-                <div className='todoList'>
-                    {/*Functional Menu has to be added here*/}
-                    <ul className='todoList__items'>
-                        {/* Filtering completed */}
+                    <List sx={{ width: '80%', maxWidth: 600, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, margin: 'auto', marginTop: 5 }}>
                         {todos.filter(todo => todo.completed === false).map( todo => (
                             <React.Fragment key={todo.id}>
-                                <li className='todoItem'>
-                                    <button
-                                    className='todoItem__remove'
+                                <ListItem>
+                                    <Button
+                                    sx={{ mr: 2}}
+                                    variant='contained'
                                     value={todo.id}
                                     onClick={complete}
-                                    >remove</button>
+                                    >remove</Button>
                                     {todo.edit ?
-                                    <input
-                                    className='todoItem__edit'
+                                    <Input
+                                    sx={{ width: '60%', maxWidth: 600, display: 'block'}}
                                     type='text'
                                     value={editVal}
                                     placeholder={todo.name}
@@ -45,17 +43,15 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                                     />
                                     :
                                     <span
-                                    className='todoItem__name'
                                     onClick={() => {
                                         todoEdit(todo.id)
                                     }}
                                     >{todo.name}</span>
                                     }
-                                </li>
+                                </ListItem>
                             </React.Fragment>
                         ))}
-                    </ul>
-                </div>
+                    </List>
         </React.Fragment>
     )
 }
