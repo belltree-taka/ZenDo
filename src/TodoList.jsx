@@ -14,7 +14,12 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
             setEditVal(e.target.value)
         }
     }
-
+    const inputCancelHandler = () => {
+        const todosWithAllEditFlagToFalse = todos.map((todo) => {
+            return {...todo, edit: false}
+        })
+        setTodos([...todosWithAllEditFlagToFalse])
+    }
 	return(
         <React.Fragment>
                     <List sx={{ width: '80%', maxWidth: 600, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, margin: 'auto', marginTop: 5 }}>
@@ -36,6 +41,7 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                                     onChange={editValHandler}
                                     onBlur={() => {
                                         setEditVal('')
+                                        inputCancelHandler()
                                     }}
                                     onKeyDown={(e) => {
                                         if(e.key === 'Enter'){
