@@ -20,8 +20,8 @@ const Component = (props) => {
 
 
     const changeHandler = (e) => {
-        if(e.target.value.length > 25){
-            setWarning('You can not add more than 25 characters')
+        if(e.target.value.length > 50){
+            setWarning('You can not add more than 50 characters')
             return;
         }else{
             setVal(e.target.value)
@@ -54,10 +54,10 @@ const Component = (props) => {
         setVal('') // Empty form after submission
     }
 
-    const complete = (e) => {
+    const complete = (_id) => {
         // item that has matching id gets its completed flag turned on(true)
         const todosAfterComplete = todos.map((todo) => {
-            if(todo.id.toString() === e.target.value){
+            if(todo.id.toString() === _id.toString()){
                 return {...todo, completed: true}
             }else{
                 return {...todo}
@@ -120,9 +120,9 @@ const Component = (props) => {
                         <img style={{width:'100px', height:'100px'}}src="logo.svg" alt="" />
                     </h1>
                 </header>
-                <Typography color='primary'  sx={{display: 'block', width: '100%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold', textAlign: 'center', position: 'sticky', top: '0', zIndex: 1}}>You have<span style={{fontSize: '2rem', margin: '0 5px', color: '#df4f1b'}}>{remainingCount}</span>items left</Typography>
+                <Typography color='primary'  sx={{display: 'block', width: '100%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold', textAlign: 'center'}}>You have<span style={{fontSize: '2rem', margin: '0 5px', color: '#df4f1b'}}>{remainingCount}</span>items left</Typography>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
-                <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val}/>
+                <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} setWarning={setWarning}/>
         </React.Fragment>
     )
 }

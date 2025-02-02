@@ -1,14 +1,16 @@
 import React from 'react'
 import {useState} from 'react'
-import { Button, List, ListItem, Input } from '@mui/material'
+import { List, ListItem, Input} from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 
 
 const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, updateTodo, warning, setWarning}) => {
     const [ editVal, setEditVal ] = useState('')
     const editValHandler = (e) => {
-        if(e.target.value.length > 25){
-            setWarning('You can not add more than 25 characters')
+        if(e.target.value.length > 50){
+            setWarning('You can not add more than 50 characters')
             return;
         }else{
             setEditVal(e.target.value)
@@ -22,16 +24,16 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
     }
 	return(
         <React.Fragment>
-                    <List sx={{ width: '80%', maxWidth: 600, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, margin: 'auto', marginTop: 5 }}>
+                    <List sx={{ width: '80%', maxWidth: 600, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, margin: 'auto', marginTop: 5, overflowY: 'auto', maxHeight: 400}}>
                         {todos.filter(todo => todo.completed === false).map( todo => (
                             <React.Fragment key={todo.id}>
                                 <ListItem>
-                                    <Button
+                                    <IconButton
                                     sx={{ mr: 2}}
-                                    variant='contained'
-                                    value={todo.id}
-                                    onClick={complete}
-                                    >remove</Button>
+                                    onClick={() => {
+                                        complete(todo.id)
+                                    }}
+                                    ><DeleteIcon/></IconButton>
                                     {todo.edit ?
                                     <Input
                                     sx={{ width: '60%', maxWidth: 600, display: 'block'}}
@@ -54,6 +56,7 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                                     />
                                     :
                                     <span
+                                    style={{cursor: 'pointer', width: '100%', display: 'block'}}
                                     onClick={() => {
                                         todoEdit(todo.id)
                                     }}
