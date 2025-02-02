@@ -3,6 +3,8 @@ import {useState} from 'react'
 import { List, ListItem, Input} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
 
 
 
@@ -22,9 +24,13 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
         })
         setTodos([...todosWithAllEditFlagToFalse])
     }
+    const hasIncompleteTodo = todos.some((todo) => {
+        return todo.completed === false
+    })
+
 	return(
         <React.Fragment>
-                    <List sx={{ width: '80%', maxWidth: 600, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, margin: 'auto', marginTop: 5, overflowY: 'auto', maxHeight: 400}}>
+            { hasIncompleteTodo ? <List sx={{ width: '80%', maxWidth: 600, bgcolor: 'background.paper', boxShadow: 3, borderRadius: 2, margin: 'auto', marginTop: 5, overflowY: 'auto', maxHeight: 400}}>
                         {todos.filter(todo => todo.completed === false).map( todo => (
                             <React.Fragment key={todo.id}>
                                 <ListItem>
@@ -36,7 +42,7 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                                     ><DeleteIcon/></IconButton>
                                     {todo.edit ?
                                     <Input
-                                    sx={{ width: '60%', maxWidth: 600, display: 'block'}}
+                                    sx={{ width: '100%', maxWidth: 600, display: 'block'}}
                                     type='text'
                                     value={editVal}
                                     placeholder={todo.name}
@@ -65,7 +71,7 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                                 </ListItem>
                             </React.Fragment>
                         ))}
-                    </List>
+                    </List>: null }        
         </React.Fragment>
     )
 }

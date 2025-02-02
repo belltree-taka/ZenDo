@@ -120,7 +120,7 @@ const Component = (props) => {
                         <img style={{width:'100px', height:'100px'}}src="logo.svg" alt="" />
                     </h1>
                 </header>
-                <Typography color='primary'  sx={{display: 'block', width: '100%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold', textAlign: 'center'}}>You have<span style={{fontSize: '2rem', margin: '0 5px', color: '#df4f1b'}}>{remainingCount}</span>items left</Typography>
+                <Typography sx={{display: 'block', width: '100%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold', textAlign: 'center'}}><Typography color='primary' style={{fontSize: '2rem', margin: '0 5px'}}>{remainingCount}</Typography>items left</Typography>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
                 <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} setWarning={setWarning}/>
         </React.Fragment>
