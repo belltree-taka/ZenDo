@@ -3,7 +3,7 @@ import { Input, Alert} from '@mui/material'
 
 
 
-const TodoForm = ({todos, setTodos, clickHandler, changeHandler, warning, val, visible, setVisible}) => {
+const TodoForm = ({todos, setTodos, clickHandler, changeHandler, warning, val}) => {
 
     
     return(

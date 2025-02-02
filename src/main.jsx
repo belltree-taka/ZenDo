@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Todo from './Todo.jsx'
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import { Padding } from '@mui/icons-material';
 
 const theme = createTheme({
   palette: {

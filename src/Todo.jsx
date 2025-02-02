@@ -17,11 +17,15 @@ const Component = (props) => {
     const [todos, setTodos] = useState([...todoItems])
     const [ val, setVal ] = useState('');
     const [ warning, setWarning ] = useState('');
-    const [ visible, setVisible ] = useState(false);
 
 
     const changeHandler = (e) => {
-        setVal(e.target.value)
+        if(e.target.value.length > 25){
+            setWarning('You can not add more than 25 characters')
+            return;
+        }else{
+            setVal(e.target.value)
+        }
     }
 
     const clickHandler = (e) => {
@@ -38,17 +42,9 @@ const Component = (props) => {
                 }) === i);
             });
             setTodos([...cleanList])
-            setWarning('This items already exists');
-            setVisible(true)
-            setTimeout(() => {
-                setVisible(false)
-            },3000)
+            setWarning('This item already exists');
         }else if( val === '' ){  // Empty Data Entry Warning
             setWarning('You can not add empty item')
-            setVisible(true)
-            setTimeout(() => {
-                setVisible(false)
-            },3000)
         }else{
             const randomNum = nanoid();
             const newTodo = {id: randomNum, name: val, edit: false, completed: false}
@@ -95,21 +91,12 @@ const Component = (props) => {
                 return {...todo, edit: false}
             })
             setWarning('This item already exists in the list')
-            setVisible(true)
-                    setTimeout(() => {
-                        setVisible(false)
-                    },3000)
             setTodos([...todosWithAllEditFlagToFalse])
-            
         } else {
             const todosAfterUpdate = todos.map((todo) => {
                 if(todo.id === _id){
                     if( _editVal === ''){
                         setWarning('You can not add empty item')
-                        setVisible(true)
-                        setTimeout(() => {
-                            setVisible(false)
-                        },3000)
                         return {...todo, name: todo.name, edit: false}
                     }else{
                         // If the data entry is diffrent from the existing value and no empty value, then update with new value(name)
@@ -128,13 +115,14 @@ const Component = (props) => {
     
 	return(
         <React.Fragment>
-            <div>
                 <header>
+                    <h1 style={{textAlign: 'center', paddingTop: '20px'}}>
+                        <img style={{width:'100px', height:'100px'}}src="logo.svg" alt="" />
+                    </h1>
                 </header>
-                <Typography color='primary'  sx={{display: 'block', width: '100%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold', textAlign: 'center'}}>You have<span style={{fontSize: '2rem', margin: '0 5px', color: '#df4f1b'}}>{remainingCount}</span>items left</Typography>
+                <Typography color='primary'  sx={{display: 'block', width: '100%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold', textAlign: 'center', position: 'sticky', top: '0', zIndex: 1}}>You have<span style={{fontSize: '2rem', margin: '0 5px', color: '#df4f1b'}}>{remainingCount}</span>items left</Typography>
                 <TodoList todos={todos} setTodos={setTodos} complete={complete} val={val} changeHandler={changeHandler} todoEdit={todoEdit} updateTodo={updateTodo} warning={warning} setWarning={setWarning}/>
-                <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val} visible={visible} setVisible={setVisible}/>
-            </div>
+                <TodoForm todos={todos} setTodos={setTodos} clickHandler={clickHandler} changeHandler={changeHandler} warning={warning} val={val}/>
         </React.Fragment>
     )
 }

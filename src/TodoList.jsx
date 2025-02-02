@@ -7,7 +7,12 @@ import { Button, List, ListItem, Input } from '@mui/material'
 const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, updateTodo, warning, setWarning}) => {
     const [ editVal, setEditVal ] = useState('')
     const editValHandler = (e) => {
-        setEditVal(e.target.value)
+        if(e.target.value.length > 25){
+            setWarning('You can not add more than 25 characters')
+            return;
+        }else{
+            setEditVal(e.target.value)
+        }
     }
 
 	return(
