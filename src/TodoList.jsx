@@ -1,29 +1,13 @@
 import React from 'react'
-import {useState} from 'react'
+import PropTypes from 'prop-types';
 import { List, ListItem, Input} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
 
-
-
-const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, updateTodo, warning, setWarning}) => {
-    const [ editVal, setEditVal ] = useState('')
-    const editValHandler = (e) => {
-        if(e.target.value.length > 50){
-            setWarning('You can not add more than 50 characters')
-            return;
-        }else{
-            setEditVal(e.target.value)
-        }
-    }
-    const inputCancelHandler = () => {
-        const todosWithAllEditFlagToFalse = todos.map((todo) => {
-            return {...todo, edit: false}
-        })
-        setTodos([...todosWithAllEditFlagToFalse])
-    }
+const TodoList = ({todos, complete, todoEdit, updateTodo, inputCancelHandler, editValHandler, editVal, setEditVal}) => {
+    
     const hasIncompleteTodo = todos.some((todo) => {
         return todo.completed === false
     })
@@ -75,6 +59,17 @@ const TodoList = ({todos, setTodos, complete, val, changeHandler, todoEdit, upda
                     </List>: null }        
         </React.Fragment>
     )
+}
+
+TodoList.propTypes = {
+    todos: PropTypes.array,
+    complete: PropTypes.func,
+    todoEdit: PropTypes.func,
+    updateTodo: PropTypes.func,
+    inputCancelHandler: PropTypes.func,
+    editValHandler: PropTypes.func,
+    editVal: PropTypes.string,
+    setEditVal: PropTypes.func,
 }
 
 export default TodoList
