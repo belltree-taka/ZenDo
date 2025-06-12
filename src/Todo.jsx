@@ -3,10 +3,11 @@ import { useState } from 'react'
 import { nanoid } from 'nanoid'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
-import { Typography } from '@mui/material';
+import { Typography, Button } from '@mui/material';
+import PropTypes from 'prop-types'
 
 
-const Todo = () => {
+const Todo = ({ onLogout }) => {
     // Sample Data
     const todoItems = [
         {id: 1, name: 'Todo1', edit: false, completed: false},
@@ -140,13 +141,14 @@ const Todo = () => {
     
     const remainingCount = todos.filter(todo => !todo.completed).length
     
-	return(
+        return(
         <React.Fragment>
-                <header style={{width: '80%', paddingTop: '30px', maxWidth: 600, margin: '0 auto'}}>
-                    <h1>
+                <header style={{width: '80%', paddingTop: '30px', maxWidth: 600, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <h1 style={{margin: 0}}>
                         Todo App
                         <img style={{width:'50px', height:'50px', verticalAlign: 'bottom', marginLeft:'10px'}}src="logo.svg" alt="logo"/>
                     </h1>
+                    { onLogout ? <Button variant="outlined" onClick={onLogout}>Logout</Button> : null }
                 </header>
                 <Typography sx={{display: 'block', width: '80%', maxWidth: 600, margin: '20px auto 0', fontWeight: 'bold'}}>
                     <Typography component="span" color='primary' style={{fontSize: '2rem', margin: '0 5px'}}>{remainingCount}</Typography>items left
@@ -158,3 +160,7 @@ const Todo = () => {
 }
 
 export default Todo
+
+Todo.propTypes = {
+    onLogout: PropTypes.func,
+}
